@@ -1,9 +1,9 @@
 package resource
 
 import (
-	domainInterfaces "github.com/bimonugraraga/zinogre/generator/templates/server/interfaces"
-	domainHelloWorldRepo "github.com/bimonugraraga/zinogre/generator/templates/server/repositories/start/hello_world"
-	"github.com/bimonugraraga/zinogre/generator/templates/server/usecases"
+	domainInterfaces "{{.ModulePath}}/interfaces"
+	domainHelloWorldRepo "{{.ModulePath}}/repositories/start/hello_world"
+	"{{.ModulePath}}/usecases"
 )
 
 // All Repositories

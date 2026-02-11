@@ -1,8 +1,8 @@
 package main
 
 import (
-	resource "github.com/bimonugraraga/zinogre/generator/templates/server/dal/resources"
-	"github.com/bimonugraraga/zinogre/generator/templates/server/routes"
+	resource "{{.ModulePath}}/dal/resources"
+	"{{.ModulePath}}/routes"
 )
 
 func main() {

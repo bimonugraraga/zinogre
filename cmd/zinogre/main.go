@@ -3,29 +3,39 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
+	"path/filepath"
 
 	"github.com/bimonugraraga/zinogre/generator"
 )
 
 func main() {
-	if len(os.Args) < 3 {
-		fmt.Println("Usage: zinogre new <name>")
+	if len(os.Args) < 3 || os.Args[1] != "new" {
+		fmt.Println("Usage: zinogre new <project-name or module-path>")
 		return
 	}
 
-	cmd := os.Args[1]
-	if cmd == "new" {
-		name := os.Args[2]
+	// full module path from CLI argument
+	modulePath := os.Args[2]
 
-		err := generator.Create(name)
-		if err != nil {
-			fmt.Println("Error:", err)
-			return
-		}
+	// folder name = last element of module path
+	folderName := filepath.Base(modulePath)
 
-		fmt.Println("Project created:", name)
-		return
+	// create project folder with templates
+	err := generator.Create(folderName, modulePath)
+	if err != nil {
+		panic(err)
 	}
 
-	fmt.Println("Unknown command:", cmd)
+	// initialize go.mod inside the folder
+	cmd := exec.Command("go", "mod", "init", modulePath)
+	cmd.Dir = folderName
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err = cmd.Run()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Project created: %s (module: %s)\n", folderName, modulePath)
 }

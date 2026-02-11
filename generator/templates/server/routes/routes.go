@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"github.com/bimonugraraga/zinogre/generator/templates/server/handlers"
 	"github.com/gofiber/fiber/v2"
+	"{{.ModulePath}}/handlers"
 )
 
 func InitFiber() {

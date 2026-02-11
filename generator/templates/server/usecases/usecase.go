@@ -1,9 +1,9 @@
 package usecases
 
 import (
-	domainInterfaces "github.com/bimonugraraga/zinogre/generator/templates/server/interfaces"
-	mStart "github.com/bimonugraraga/zinogre/generator/templates/server/repositories/start/models"
-	mUsecase "github.com/bimonugraraga/zinogre/generator/templates/server/usecases/models"
+	domainInterfaces "{{.ModulePath}}/interfaces"
+	mStart "{{.ModulePath}}/repositories/start/models"
+	mUsecase "{{.ModulePath}}/usecases/models"
 )
 
 type Usecase struct {
