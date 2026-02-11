@@ -1,7 +1,7 @@
 package helloworld
 
 import (
-	mStart "github.com/bimonugraraga/zinogre/repositories/start/models"
+	mStart "github.com/bimonugraraga/zinogre/internal/repositories/start/models"
 )
 
 type Repository struct {

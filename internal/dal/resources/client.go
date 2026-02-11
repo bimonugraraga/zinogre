@@ -1,9 +1,9 @@
 package resource
 
 import (
-	domainInterfaces "github.com/bimonugraraga/zinogre/interfaces"
-	domainHelloWorldRepo "github.com/bimonugraraga/zinogre/repositories/start/hello_world"
-	"github.com/bimonugraraga/zinogre/usecases"
+	domainInterfaces "github.com/bimonugraraga/zinogre/internal/interfaces"
+	domainHelloWorldRepo "github.com/bimonugraraga/zinogre/internal/repositories/start/hello_world"
+	"github.com/bimonugraraga/zinogre/internal/usecases"
 )
 
 // All Repositories

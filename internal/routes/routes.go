@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/bimonugraraga/zinogre/handlers"
+	"github.com/bimonugraraga/zinogre/internal/handlers"
 	"github.com/gofiber/fiber/v2"
 )
 
