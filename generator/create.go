@@ -7,18 +7,36 @@ import (
 	"path/filepath"
 )
 
+// embed everything inside generator/templates
+//
+//go:embed templates/**
 var templates embed.FS
 
 func Create(name string) error {
-	return fs.WalkDir(templates, "templates/server", func(path string, d fs.DirEntry, err error) error {
+	root := "templates/server"
 
-		target := filepath.Join(name, path[len("templates/server/"):])
+	return fs.WalkDir(templates, root, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+
+		// get safe relative path
+		rel, err := filepath.Rel(root, path)
+		if err != nil {
+			return err
+		}
+
+		target := filepath.Join(name, rel)
 
 		if d.IsDir() {
 			return os.MkdirAll(target, 0755)
 		}
 
-		data, _ := templates.ReadFile(path)
+		data, err := templates.ReadFile(path)
+		if err != nil {
+			return err
+		}
+
 		return os.WriteFile(target, data, 0644)
 	})
 }
