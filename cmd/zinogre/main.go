@@ -8,15 +8,12 @@ import (
 )
 
 func main() {
-	fmt.Println("DEBUG: new CLI running")
-
 	if len(os.Args) < 3 {
 		fmt.Println("Usage: zinogre new <name>")
 		return
 	}
 
 	cmd := os.Args[1]
-	fmt.Println(cmd, ">>>")
 	if cmd == "new" {
 		name := os.Args[2]
 
