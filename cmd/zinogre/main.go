@@ -4,22 +4,17 @@ import (
 	"fmt"
 	"os"
 
-	app "github.com/bimonugraraga/zinogre/internal/app/http"
+	"github.com/bimonugraraga/zinogre/generator"
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Usage:")
-		fmt.Println("  zinogre serve")
+	if len(os.Args) < 3 || os.Args[1] != "new" {
+		fmt.Println("Usage: zinogre new <project-name>")
 		return
 	}
 
-	switch os.Args[1] {
-
-	case "serve":
-		app.Main()
-
-	default:
-		fmt.Println("Unknown command:", os.Args[1])
+	err := generator.Create(os.Args[2])
+	if err != nil {
+		fmt.Println("Error:", err)
 	}
 }

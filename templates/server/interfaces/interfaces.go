@@ -1,8 +1,8 @@
 package interfaces
 
 import (
-	mStart "github.com/bimonugraraga/zinogre/internal/repositories/start/models"
-	mUsecase "github.com/bimonugraraga/zinogre/internal/usecases/models"
+	mStart "github.com/bimonugraraga/zinogre/templates/server/repositories/start/models"
+	mUsecase "github.com/bimonugraraga/zinogre/templates/server/usecases/models"
 )
 
 type Usecase interface {
