@@ -8,13 +8,27 @@ import (
 )
 
 func main() {
-	if len(os.Args) < 3 || os.Args[1] != "new" {
-		fmt.Println("Usage: zinogre new <project-name>")
+	if len(os.Args) < 3 {
+		fmt.Println("Usage:")
+		fmt.Println("  zinogre new <project-name>")
 		return
 	}
 
-	err := generator.Create(os.Args[2])
-	if err != nil {
-		fmt.Println("Error:", err)
+	command := os.Args[1]
+
+	switch command {
+
+	case "new":
+		name := os.Args[2]
+
+		if err := generator.Create(name); err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+
+		fmt.Println("Project created:", name)
+
+	default:
+		fmt.Println("Unknown command:", command)
 	}
 }
