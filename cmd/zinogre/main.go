@@ -16,7 +16,7 @@ func main() {
 	}
 
 	cmd := os.Args[1]
-
+	fmt.Println(cmd, ">>>")
 	if cmd == "new" {
 		name := os.Args[2]
 
